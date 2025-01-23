@@ -119,6 +119,151 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1135331585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1135331586}
+  - component: {fileID: 1135331587}
+  - component: {fileID: 1135331588}
+  m_Layer: 0
+  m_Name: Stylus Event Relay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1135331586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135331585}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1135331587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135331585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 645fe0b1f64d44a4681bd7f40eabdae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputActionsAsset: {fileID: -944628639613478452, guid: 1918761d077289d4bba84fc491bee96b, type: 3}
+  leftHandStylus: {fileID: 2166256004653315102}
+  rightHandStylus: {fileID: 6912689086830169889}
+  onTipActionPerformed:
+    m_PersistentCalls:
+      m_Calls: []
+  onGrabActionPerformed:
+    m_PersistentCalls:
+      m_Calls: []
+  onOptionActionPerformed:
+    m_PersistentCalls:
+      m_Calls: []
+  onMiddleActionPerformed:
+    m_PersistentCalls:
+      m_Calls: []
+  onStylusConnected:
+    m_PersistentCalls:
+      m_Calls: []
+  onStylusDisconnected:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1135331588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135331585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967717220aaa5f64d8ac68abccf349cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stylusEvents: {fileID: 1135331587}
+  logTipAction: 0
+  logGrabAction: 0
+  logOptionAction: 0
+  logMiddleAction: 0
+--- !u!1 &1279099911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1279099912}
+  m_Layer: 0
+  m_Name: ---------- Logic Only  ----------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1279099912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279099911}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.1316748, y: 1.8411161, z: 0.44548586}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1470135610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1470135611}
+  m_Layer: 0
+  m_Name: '---------- World  ---------- '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1470135611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470135610}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.1316748, y: 1.8411161, z: 0.44548586}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1601087459
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +275,7 @@ GameObject:
   - component: {fileID: 1601087461}
   - component: {fileID: 1601087460}
   m_Layer: 0
-  m_Name: Stylus Test
+  m_Name: Stylus Haptics Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,8 +294,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   demoPeriodicHaptic: 0
-  inputActionsAsset: {fileID: -944628639613478452, guid: 1918761d077289d4bba84fc491bee96b, type: 3}
-  stylusOnRightHand: 0
 --- !u!4 &1601087461
 Transform:
   m_ObjectHideFlags: 0
@@ -497,7 +640,10 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1470135611}
   - {fileID: 1953452053}
   - {fileID: 2023266015}
   - {fileID: 1708262724}
+  - {fileID: 1279099912}
+  - {fileID: 1135331586}
   - {fileID: 1601087461}
