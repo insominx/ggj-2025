@@ -309,11 +309,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1636296508 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4556511804277513050, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-  m_PrefabInstance: {fileID: 1708262724}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1708262724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -322,22 +317,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1851288182145388386, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-      propertyPath: m_AttachTransform
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1851288182145388386, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-      propertyPath: m_RayOriginTransform
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1938451983429401312, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-      propertyPath: m_AttachTransform
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1938451983429401312, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-      propertyPath: m_RayOriginTransform
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3221568920173192006, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -382,37 +361,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Origin (GGJ)
       objectReference: {fileID: 0}
-    - target: {fileID: 8120671148716108974, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-      propertyPath: leftHandStylus
+    - target: {fileID: 8105716394253548528, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
+      propertyPath: stylusEvents
       value: 
-      objectReference: {fileID: 2166256004653315102}
-    - target: {fileID: 8120671148716108974, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-      propertyPath: rightHandStylus
-      value: 
-      objectReference: {fileID: 6912689086830169889}
-    - target: {fileID: 8120671148716108974, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-      propertyPath: leftHandController
-      value: 
-      objectReference: {fileID: 1997150012}
-    - target: {fileID: 8120671148716108974, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-      propertyPath: rightHandController
-      value: 
-      objectReference: {fileID: 1636296508}
-    - target: {fileID: 9078318797359098515, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-      propertyPath: m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9222398649716812564, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-      propertyPath: m_GazeInteractor
-      value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1135331587}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 3859551808139974617, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-    - {fileID: 850523968856274162, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-    - {fileID: 5157980697526043557, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-    - {fileID: 8649279255868003295, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-    - {fileID: 4685258233747537714, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
@@ -513,11 +467,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1997150012 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5205940741453006376, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-  m_PrefabInstance: {fileID: 1708262724}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2023266011
 GameObject:
   m_ObjectHideFlags: 0

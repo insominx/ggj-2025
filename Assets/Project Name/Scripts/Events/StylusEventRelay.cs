@@ -40,6 +40,7 @@ public class StylusEventRelay : MonoBehaviour
 
     XRInputDevice stylus;
 
+    //---------------------------------------------------------------------------
     void Awake()
     {
         InputDevices.deviceConnected += OnDeviceConnected;
@@ -84,6 +85,7 @@ public class StylusEventRelay : MonoBehaviour
             OnDeviceConnected(device);
     }
 
+    //---------------------------------------------------------------------------
     void OnDestroy()
     {
         InputDevices.deviceConnected -= OnDeviceConnected;
@@ -95,6 +97,7 @@ public class StylusEventRelay : MonoBehaviour
         if (middleAction != null) middleAction.performed -= OnMiddleActionPerformed;
     }
 
+    //---------------------------------------------------------------------------
     void OnDeviceConnected(XRInputDevice device)
     {
         if (device.name.ToLower().Contains("logitech"))
@@ -107,6 +110,7 @@ public class StylusEventRelay : MonoBehaviour
         }
     }
 
+    //---------------------------------------------------------------------------
     void OnDeviceDisconnected(XRInputDevice device)
     {
         if (device.name.ToLower().Contains("logitech") && stylus.Equals(device))
@@ -119,31 +123,31 @@ public class StylusEventRelay : MonoBehaviour
         }
     }
 
+    //---------------------------------------------------------------------------
     void OnTipActionPerformed(InputAction.CallbackContext context)
     {
         float tipValue = context.ReadValue<float>();
-        Debug.Log($"Tip Action Performed: Value = {tipValue}");
         onTipActionPerformed.Invoke(tipValue);
     }
 
+    //---------------------------------------------------------------------------
     void OnGrabActionPerformed(InputAction.CallbackContext context)
     {
         bool isGrabPressed = context.ReadValueAsButton();
-        Debug.Log($"Grab Action Performed: IsPressed = {isGrabPressed}");
         onGrabActionPerformed.Invoke(isGrabPressed);
     }
 
+    //---------------------------------------------------------------------------
     void OnOptionActionPerformed(InputAction.CallbackContext context)
     {
         bool isOptionPressed = context.ReadValueAsButton();
-        Debug.Log($"Option Action Performed: IsPressed = {isOptionPressed}");
         onOptionActionPerformed.Invoke(isOptionPressed);
     }
 
+    //---------------------------------------------------------------------------
     void OnMiddleActionPerformed(InputAction.CallbackContext context)
     {
         float middleValue = context.ReadValue<float>();
-        Debug.Log($"Middle Action Performed: Value = {middleValue}");
         onMiddleActionPerformed.Invoke(middleValue);
     }
 }
