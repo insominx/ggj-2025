@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Name: Android
   m_EditorClassIdentifier: 
   features:
+  - {fileID: 7600720425417874386}
   - {fileID: 8930891034184500309}
   - {fileID: -7640995266192609978}
   - {fileID: 2979812608843838220}
@@ -281,10 +282,12 @@ MonoBehaviour:
   - {fileID: 4814966647768083955}
   - {fileID: 7880174158235431709}
   - {fileID: -4050044474944917847}
+  - {fileID: 5992391043638768624}
   - {fileID: 1122582941875143834}
   - {fileID: 2947255211749280462}
   - {fileID: 1627174003818519897}
   - {fileID: 6864343417898484685}
+  - {fileID: -4636066742618762226}
   - {fileID: -7796394605530342979}
   - {fileID: 8678892576427614013}
   - {fileID: 7784321820782340957}
@@ -317,17 +320,7 @@ MonoBehaviour:
   m_Name: Standalone
   m_EditorClassIdentifier: 
   features:
-  - {fileID: -355206367794358703}
-  - {fileID: 4393593387569328173}
-  - {fileID: 8625348173405299670}
-  - {fileID: -4135887797496625758}
-  - {fileID: -1944585762738415912}
   - {fileID: 3799148919880862824}
-  - {fileID: 7177679298889940553}
-  - {fileID: 4209905258943434073}
-  - {fileID: 713035096038146375}
-  - {fileID: -3498503364295646891}
-  - {fileID: -7594964720970995263}
   - {fileID: 6279330296319401734}
   - {fileID: 4787877739830667330}
   - {fileID: -1567908192558122105}
@@ -340,6 +333,16 @@ MonoBehaviour:
   - {fileID: -5772582730546074299}
   - {fileID: 7419660570615318675}
   - {fileID: 1988373804990380758}
+  - {fileID: 4393593387569328173}
+  - {fileID: 4209905258943434073}
+  - {fileID: -7594964720970995263}
+  - {fileID: 8625348173405299670}
+  - {fileID: -355206367794358703}
+  - {fileID: -1944585762738415912}
+  - {fileID: 713035096038146375}
+  - {fileID: -3498503364295646891}
+  - {fileID: 7177679298889940553}
+  - {fileID: -4135887797496625758}
   - {fileID: 822914307200059104}
   - {fileID: 1754409252296478930}
   - {fileID: 6867325503845205882}
@@ -457,6 +460,27 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+--- !u!114 &-4636066742618762226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9b8cd1fcf8499eb57f194da9698fcd, type: 3}
+  m_Name: AROcclusionFeature Android
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: 'Meta Quest: Occlusion'
+  version: 0.1.0
+  featureIdInternal: com.unity.openxr.feature.arfoundation-meta-occlusion
+  openxrExtensionStrings: XR_META_environment_depth
+  company: Unity Technologies
+  priority: 0
+  required: 0
+  m_EnableHandRemoval: 0
 --- !u!114 &-4218106041698210794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1079,7 +1103,7 @@ MonoBehaviour:
   nameUi: 'Meta Quest: Camera (Passthrough)'
   version: 0.1.0
   featureIdInternal: com.unity.openxr.feature.arfoundation-meta-camera
-  openxrExtensionStrings: XR_FB_passthrough XR_FB_composition_layer_alpha_blend
+  openxrExtensionStrings: XR_FB_passthrough
   company: Unity Technologies
   priority: 0
   required: 0
@@ -1445,6 +1469,26 @@ MonoBehaviour:
   priority: 0
   required: 0
   m_EnableHandRemoval: 0
+--- !u!114 &5992391043638768624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f61610f95074135a9fd060fc37c4788, type: 3}
+  m_Name: BoundaryVisibilityFeature Android
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: 'Meta Quest: Boundary Visibility'
+  version: 0.1.0
+  featureIdInternal: com.unity.openxr.feature.meta-boundary-visibility
+  openxrExtensionStrings: XR_META_boundary_visibility
+  company: Unity Technologies
+  priority: 0
+  required: 0
 --- !u!114 &6279330296319401734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1566,6 +1610,26 @@ MonoBehaviour:
   openxrExtensionStrings: XR_META_touch_controller_plus
   company: Unity
   priority: 0
+  required: 0
+--- !u!114 &7600720425417874386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 323d71788dcf5ca4b9cb3c4a90e38335, type: 3}
+  m_Name: OpenXRLifeCycleFeature Android
+  m_EditorClassIdentifier: 
+  m_enabled: 1
+  nameUi: 
+  version: 0.1.0
+  featureIdInternal: MetaOpenXR-OpenXRLifeCycle
+  openxrExtensionStrings: 
+  company: Unity Technologies
+  priority: 2147483647
   required: 0
 --- !u!114 &7784321820782340957
 MonoBehaviour:
