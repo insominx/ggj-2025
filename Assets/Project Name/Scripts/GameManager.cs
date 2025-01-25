@@ -34,11 +34,18 @@ public class GameManager : MonoBehaviour
 
         if (currentState.ShouldEnd())
         {
+            StopState(currentState);
+
             // TODO: Update this in a better way (don't want to repeat start or title).
             currentGameStateIdx = (currentGameStateIdx + 1) % gameStates.Length;
 
             StartState(currentState);
         }
+    }
+
+    void StopState(GameState state)
+    {
+        state.Stop();
     }
 
     void StartState(GameState state)

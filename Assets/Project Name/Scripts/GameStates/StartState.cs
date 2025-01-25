@@ -11,6 +11,11 @@ class StartState : GameState
         // Nada ftm.
     }
 
+    public override void Stop()
+    {
+        // Nada ftm.
+    }
+
     public override void Update()
     {
         // Nada ftm.

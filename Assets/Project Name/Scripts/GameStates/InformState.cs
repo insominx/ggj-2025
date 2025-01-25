@@ -19,11 +19,17 @@ class InformState : GameState
     public override void Start()
     {
         startTime = Time.time;
+        Informer.ShowText(text);
+    }
+
+    public override void Stop()
+    {
+        Informer.ShowText("");
     }
 
     public override void Update()
     {
-        // TODO: show on-screen text.
+        // Nada ftm.
     }
 
     public override bool ShouldEnd()
