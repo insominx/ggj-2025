@@ -17,6 +17,21 @@ public class Living : MonoBehaviour
         
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        
+        // Checks if the collider has the explosion scrript
+        if(other.gameObject.GetComponent<Explosion>() != null)
+        {
+
+            // If it does, the this object will take some damage
+            this.takeDamage(1);
+
+        }
+
+    }
+
+    // Lil function that handles the tanking of damage
     void takeDamage(int damage)
     {
 
