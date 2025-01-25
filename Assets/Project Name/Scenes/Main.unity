@@ -278,6 +278,9 @@ MonoBehaviour:
   leftControllerImpulse: {fileID: 0}
   spherePrefab: {fileID: 0}
   stylusTip: {fileID: 0}
+  audioSource: {fileID: 0}
+  chargeSound: {fileID: 0}
+  fireSound: {fileID: 0}
   initialAmplitude: 0.2
   maxAmplitude: 1
   initialDuration: 1
@@ -504,10 +507,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5464797838598613330, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1761753655}
     - target: {fileID: 5589547084736163474, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
       propertyPath: m_Name
       value: XR Origin (GGJ)
       objectReference: {fileID: 0}
+    - target: {fileID: 7996003232767197835, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1761753655}
     - target: {fileID: 8105716394253548528, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
       propertyPath: stylusEvents
       value: 
@@ -515,71 +526,87 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5589547084736163474, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1708262727}
-    - targetCorrespondingSourceObject: {fileID: 5589547084736163474, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1708262726}
-    - targetCorrespondingSourceObject: {fileID: 5589547084736163474, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1708262728}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
---- !u!1 &1708262725 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5589547084736163474, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
+--- !u!114 &1708262726 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3070119173051103180, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
   m_PrefabInstance: {fileID: 1708262724}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1708262726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1708262725}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36c26a894c4b4a7fa891eaf696025cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <trackablesChanged>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
-  m_BoundingBoxPrefab: {fileID: 293106963504090463, guid: 8c31e5698c6bbc64ba09af3def6ab04d, type: 3}
---- !u!114 &1708262727
+--- !u!114 &1708262727 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 848332177540806345, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
+  m_PrefabInstance: {fileID: 1708262724}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1708262725}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <trackablesChanged>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
-  m_PlanePrefab: {fileID: 1005841180929067226, guid: 87cdbc5c46f43bb47b07dec910e02ea2, type: 3}
-  m_DetectionMode: -1
---- !u!114 &1708262728
+--- !u!114 &1708262728 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 233742674013468969, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
+  m_PrefabInstance: {fileID: 1708262724}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1708262725}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 728ad7fae8e460a4ba41265c7308d757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <trackablesChanged>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
-  m_AnchorPrefab: {fileID: 3125165527598978782, guid: 779f5eab1277241d6b58ee2c44909b20, type: 3}
+--- !u!1 &1761753654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1761753656}
+  - component: {fileID: 1761753655}
+  m_Layer: 0
+  m_Name: XR Interaction Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1761753655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761753654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+--- !u!4 &1761753656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761753654}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1781947279
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,8 +855,8 @@ Transform:
   m_GameObject: {fileID: 2023266011}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 2.05, y: 2.05, z: 2.05}
+  m_LocalPosition: {x: 0, y: 0.25, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -858,3 +885,4 @@ SceneRoots:
   - {fileID: 1601087461}
   - {fileID: 176755213}
   - {fileID: 1207207777}
+  - {fileID: 1761753656}
