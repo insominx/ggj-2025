@@ -20,11 +20,11 @@ public class Living : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         
-        // Checks if the collider has the explosion scrript
+        // Checks if the collider has the explosion script
         if(other.gameObject.GetComponent<Explosion>() != null)
         {
 
-            // If it does, the this object will take some damage
+            // If it does, then this object will take some damage
             this.takeDamage(1);
 
         }
