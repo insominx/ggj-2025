@@ -7,7 +7,9 @@
         "Unity.XR.Interaction.Toolkit",
         "Unity.XR.ARFoundation",
         "Unity.XR.ARSubsystems",
-        "Unity.XR.Interaction.Toolkit.Samples.StarterAssets"
+        "Unity.XR.Interaction.Toolkit.Samples.StarterAssets",
+        "UnityEditor.UI",
+        "UnityEngine.UI"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
