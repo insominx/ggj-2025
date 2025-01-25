@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Project Name/Scenes/Dan.unity
+    guid: 43be6e1c46e92094ca1e3c806ec926f7
+  - enabled: 1
     path: Assets/Project Name/Scenes/Main.unity
     guid: 5c115fbf0a63a35458b74f32b0d25b6f
+  - enabled: 1
+    path: Assets/Project Name/Scenes/Missile Com Test - Ed.unity
+    guid: 7cdd7673a87aca04190aae4281e1945b
   m_configObjects:
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 9dc60784aeca7d14d8e802405688f013, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 82d4d416af8485143a19db8f40165a20, type: 2}
