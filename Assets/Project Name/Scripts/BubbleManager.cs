@@ -8,6 +8,9 @@ public class BubbleManager : MonoBehaviour
     public HapticImpulsePlayer leftControllerImpulse;
     public GameObject spherePrefab; // Assign a sphere prefab in the inspector
     public Transform stylusTip;    // Assign the stylus tip transform in the inspector
+    public AudioSource audioSource; // Assign an AudioSource component in the inspector
+    public AudioClip chargeSound; // Assign the sound for charging in the inspector
+    public AudioClip fireSound;   // Assign the sound for firing in the inspector
     private InputDevice stylus;
 
     [Header("Haptic Parameters")]
@@ -38,9 +41,9 @@ public class BubbleManager : MonoBehaviour
 
     public void StartChargeHaptics()
     {
-        if (leftControllerImpulse == null || spherePrefab == null || stylusTip == null)
+        if (leftControllerImpulse == null || spherePrefab == null || stylusTip == null || audioSource == null)
         {
-            Debug.LogError("HapticImpulsePlayer, SpherePrefab, or StylusTip is not assigned.");
+            Debug.LogError("HapticImpulsePlayer, SpherePrefab, StylusTip, or AudioSource is not assigned.");
             return;
         }
 
@@ -75,6 +78,9 @@ public class BubbleManager : MonoBehaviour
 
         for (int i = 0; i <= steps; i++)
         {
+            // Play charge sound with adjusted amplitude
+            PlayChargeSound(currentAmplitude);
+
             // Send haptic impulse
             leftControllerImpulse.SendHapticImpulse(currentAmplitude, currentDuration);
             stylus.SendHapticImpulse(0, currentAmplitude, currentDuration);
@@ -109,6 +115,9 @@ public class BubbleManager : MonoBehaviour
             float progress = elapsedTime / linearChargeTime;
             float currentAmplitude = Mathf.Lerp(0, maxAmplitude, progress);
 
+            // Play charge sound with adjusted amplitude
+            PlayChargeSound(currentAmplitude);
+
             // Send haptic impulse
             leftControllerImpulse.SendHapticImpulse(currentAmplitude, Time.deltaTime);
             stylus.SendHapticImpulse(0, currentAmplitude, Time.deltaTime);
@@ -138,7 +147,33 @@ public class BubbleManager : MonoBehaviour
                 rb = spawnedSphere.AddComponent<Rigidbody>();
             }
 
+            // Play fire sound
+            PlayFireSound();
+
             rb.AddForce(-stylusTip.up * fireForce, ForceMode.Impulse);
+        }
+    }
+
+    private void PlayChargeSound(float amplitude)
+    {
+        if (chargeSound != null && audioSource != null)
+        {
+            audioSource.clip = chargeSound;
+            audioSource.volume = Mathf.Clamp(amplitude, 0.1f, 1f); // Scale volume with amplitude
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+    }
+
+    private void PlayFireSound()
+    {
+        if (fireSound != null && audioSource != null)
+        {
+            audioSource.clip = fireSound;
+            audioSource.volume = 1f; // Full volume for fire sound
+            audioSource.Play();
         }
     }
 
