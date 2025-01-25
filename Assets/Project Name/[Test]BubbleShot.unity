@@ -119,6 +119,22 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &394115695 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5418516419680289772, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
+  m_PrefabInstance: {fileID: 1708262724}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b734f2bd29eeddd4d85afb0c266228c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1112990996 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4471381869389575960, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
+  m_PrefabInstance: {fileID: 1708262724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1135331585
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +191,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1207207776}
         m_TargetAssemblyTypeName: BubbleManager, Assembly-CSharp
-        m_MethodName: Test
+        m_MethodName: StartChargeHaptics
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -243,6 +259,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886e7b5432b30154385b959defc1ac4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftControllerImpulse: {fileID: 394115695}
+  spherePrefab: {fileID: 2023384834262063970, guid: 2aa3d2dcdda978d4686423704f4e5f2a, type: 3}
+  stylusTip: {fileID: 1112990996}
+  initialAmplitude: 0.08
+  maxAmplitude: 1
+  initialDuration: 0.85
+  minDuration: 0.02
+  pauseTime: 0.64
+  steps: 8
+  fireForce: 6.47
 --- !u!4 &1207207777
 Transform:
   m_ObjectHideFlags: 0
