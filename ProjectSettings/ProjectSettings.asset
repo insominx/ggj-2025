@@ -164,6 +164,7 @@ PlayerSettings:
   androidMinAspectRatio: 1
   applicationIdentifier:
     Android: com.BubblTroop.SuperUltraMissileCommand
+    Standalone: com.BubblTroop.Super-Ultra-Missile-Command
   buildNumber:
     Standalone: 0
     VisionOS: 0
