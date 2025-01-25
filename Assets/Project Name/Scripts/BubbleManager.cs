@@ -18,12 +18,22 @@ public class BubbleManager : MonoBehaviour
     public float pauseTime = 1.0f;        // Pause between haptic impulses
     public int steps = 10;                // Number of steps in the charging sequence
     public float fireForce = 10f;         // Force to fire the sphere into space
+    public float linearChargeTime = 3f;  // Time to charge linearly from 0 to 1
 
     private GameObject spawnedSphere;     // Reference to the spawned sphere
+
+    public enum ChargeMode { Stepped, Linear }
+    public ChargeMode chargeMode = ChargeMode.Stepped;
 
     void Awake()
     {
         InputDevices.deviceConnected += OnInputDeviceConnected;
+    }
+
+    public void SwitchCharging()
+    {
+        // Toggle between Stepped and Linear charging modes
+        chargeMode = chargeMode == ChargeMode.Stepped ? ChargeMode.Linear : ChargeMode.Stepped;
     }
 
     public void StartChargeHaptics()
@@ -34,10 +44,23 @@ public class BubbleManager : MonoBehaviour
             return;
         }
 
-        StartCoroutine(ChargeHapticsRoutine());
+        switch (chargeMode)
+        {
+            case ChargeMode.Stepped:
+                StartCoroutine(SteppedChargeRoutine());
+                break;
+
+            case ChargeMode.Linear:
+                StartCoroutine(LinearChargeRoutine());
+                break;
+
+            default:
+                Debug.LogError("Unknown charge mode selected.");
+                break;
+        }
     }
 
-    private IEnumerator ChargeHapticsRoutine()
+    private IEnumerator SteppedChargeRoutine()
     {
         float amplitudeStep = (maxAmplitude - initialAmplitude) / steps;
         float durationStep = (initialDuration - minDuration) / steps;
@@ -72,6 +95,38 @@ public class BubbleManager : MonoBehaviour
         FireSphere();
     }
 
+    private IEnumerator LinearChargeRoutine()
+    {
+        // Spawn the sphere at the stylus tip
+        spawnedSphere = Instantiate(spherePrefab, stylusTip.position, Quaternion.identity, stylusTip.transform);
+        float fullSize = spawnedSphere.transform.localScale.x;
+        spawnedSphere.transform.localScale = Vector3.zero;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < linearChargeTime)
+        {
+            float progress = elapsedTime / linearChargeTime;
+            float currentAmplitude = Mathf.Lerp(0, maxAmplitude, progress);
+
+            // Send haptic impulse
+            leftControllerImpulse.SendHapticImpulse(currentAmplitude, Time.deltaTime);
+            stylus.SendHapticImpulse(0, currentAmplitude, Time.deltaTime);
+
+            // Grow the sphere's size based on the current amplitude
+            spawnedSphere.transform.localScale = (Vector3.one * fullSize) * progress;
+
+            elapsedTime += Time.deltaTime;
+            yield return null; // Wait for the next frame
+        }
+
+        // Ensure it's fully charged
+        spawnedSphere.transform.localScale = Vector3.one * fullSize;
+
+        // Fire the sphere into space
+        FireSphere();
+    }
+
     private void FireSphere()
     {
         if (spawnedSphere != null)
@@ -82,8 +137,8 @@ public class BubbleManager : MonoBehaviour
             {
                 rb = spawnedSphere.AddComponent<Rigidbody>();
             }
-       
-        rb.AddForce(-stylusTip.up* fireForce, ForceMode.Impulse);
+
+            rb.AddForce(-stylusTip.up * fireForce, ForceMode.Impulse);
         }
     }
 

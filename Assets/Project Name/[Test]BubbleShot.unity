@@ -203,7 +203,19 @@ MonoBehaviour:
         m_CallState: 2
   onOptionActionPerformed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1207207776}
+        m_TargetAssemblyTypeName: BubbleManager, Assembly-CSharp
+        m_MethodName: SwitchCharging
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onMiddleActionPerformed:
     m_PersistentCalls:
       m_Calls: []
@@ -269,6 +281,8 @@ MonoBehaviour:
   pauseTime: 0.64
   steps: 8
   fireForce: 6.47
+  linearChargeTime: 3
+  chargeMode: 1
 --- !u!4 &1207207777
 Transform:
   m_ObjectHideFlags: 0
