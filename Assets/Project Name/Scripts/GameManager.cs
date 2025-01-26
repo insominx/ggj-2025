@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         {
             new StartState(),
             new InformState("Wait", "", 5),
-            new InformState("Title", "Bubble Command\nby\nBubbletroop", 10),
+            new InformState("Title", "Bubble Command\nby\nBubbltroop", 10),
             new InformState("GetReady", "Get ready.", 10, true),
             new PlayState(this),
             gameConclusion = new InformState("Report", "<TBD>", 10),
