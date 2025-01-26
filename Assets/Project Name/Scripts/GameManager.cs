@@ -10,8 +10,9 @@ public class GameManager : MonoBehaviour
     public GameState[] gameStates = new GameState[]
     {
         new StartState(),
-        new InformState("Title", "Bubble Command", 10),
-        new InformState("Ready", "Get ready...", 10),
+        new InformState("Wait", "", 5),
+        new InformState("Title", "Bubble Command\nby\nBubbletroop", 10),
+        new InformState("GetReady", "Get ready.", 20, true),
         new PlayState()
     };
 
