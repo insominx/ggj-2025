@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -31,6 +32,10 @@ class PlayState : GameState
 
         // Let's say we've seen a missile now, and we'll update this later.
         timeWhenLastMissileSeen = Time.time;
+
+        // Start firing missiles now
+        gameManager.StartFiringMissiles();
+
     }
 
     public override void Stop()

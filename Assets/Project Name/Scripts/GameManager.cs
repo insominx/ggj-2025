@@ -116,6 +116,29 @@ public class GameManager : MonoBehaviour
         return enemy;
     }
 
+    public void StartFiringMissiles()
+    {
+        StartCoroutine(SpawnMissiles());
+    }
+    
+    IEnumerator SpawnMissiles()
+    {
+        SpawnMissile();
+
+        yield return new WaitForSeconds(1f);
+
+        // Some game state check
+
+        StartCoroutine(SpawnMissiles());
+
+    }
+
+    public void SpawnMissile()
+    {
+        GameObject randomLocat = enemies[(int)(UnityEngine.Random.Range(0, enemies.Count))];
+        randomLocat.GetComponent<MissileSpawner>().SpawnMissile();
+    }
+
     public void DestroyAllCities()
     {
         foreach (var city in cities)
