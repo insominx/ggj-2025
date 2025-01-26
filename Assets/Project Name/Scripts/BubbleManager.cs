@@ -173,7 +173,7 @@ public class BubbleManager : MonoBehaviour
             // Play fire sound
             PlayFireSound();
 
-            rb.AddForce(stylusTip.transform.forward * fireForce * spawnedSphere.transform.localScale.x, ForceMode.Impulse);
+            rb.AddForce(stylusTip.transform.forward * fireForce * (1f - spawnedSphere.transform.localScale.x), ForceMode.Impulse);
         }
     }
 
