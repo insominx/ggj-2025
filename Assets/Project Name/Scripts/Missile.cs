@@ -18,11 +18,25 @@ public class Missile : MonoBehaviour
         this.gameObject.transform.position += targetDirection * Time.deltaTime;
     }
 
+    bool ExplodeTag(string tag)
+    {
+        switch (tag)
+        {
+        case "City":
+        case "Bubble":
+        case "Floor":
+        case "Ceiling":
+        case "Missile":
+            return true;
+        }
+        return false;
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         // Be more selective -- we only want to explode on hitting a) a target or b) a bubble.
         var other = collision.gameObject;
-        if (other != spawner && (other.tag == "City" || other.tag == "Bubble"))
+        if (other != spawner && ExplodeTag(other.tag))
         {
             Explode();
         }

@@ -33,8 +33,6 @@ public class MissileSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         SpawnMissile();
-        
         StartCoroutine(waitThenSpawnMissiles());
     }
-    
 }

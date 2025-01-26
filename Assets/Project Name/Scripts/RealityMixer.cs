@@ -74,6 +74,8 @@ public class RealityMixer : MonoBehaviour
         float lineAlpha = 0.1f; // 1f;
 
         enemySpawnPoints.Clear();
+        // Try to find the floor and the ceiling.
+        ARPlane floor = null, ceiling = null;
         foreach (ARPlane arPlane in planeManager.trackables)
         {
             SetTrackableAlpha(arPlane, fillAlpha, lineAlpha);
@@ -83,7 +85,20 @@ public class RealityMixer : MonoBehaviour
             var spot = pose.position;
 
             enemySpawnPoints.Add(new Pose(spot, pose.rotation));
+
+            // Assume the floor and ceiling have the lowest and highest Y respectively.
+            if (!floor || spot.y < floor.transform.position.y)
+            {
+                floor = arPlane;
+            }
+            if (!ceiling || spot.y > ceiling.transform.position.y)
+            {
+                ceiling = arPlane;
+            }
         }
+        // Tag them as ceiling and floor respectively.
+        floor.gameObject.tag = "Floor";
+        ceiling.gameObject.tag = "Ceiling";
     }
 
     void OnBoundingBoxesChanged(ARTrackablesChangedEventArgs<ARBoundingBox> args)

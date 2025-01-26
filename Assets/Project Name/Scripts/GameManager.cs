@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
     IEnumerator SpawnMissiles()
     {
         SpawnMissile();
-        
+
         Debug.Log("Spawning missile");
 
         yield return new WaitForSeconds(1f);
@@ -142,14 +142,15 @@ public class GameManager : MonoBehaviour
         // Some game state check
 
         StartCoroutine(SpawnMissiles());
-
     }
 
     public void SpawnMissile()
     {
 
         if (enemies.Count == 0)
+        {
             return;
+        }
         
         Debug.Log("Finding a random element in " + enemies.Count);
         int rand = UnityEngine.Random.Range(0, enemies.Count);
