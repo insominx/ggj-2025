@@ -4,9 +4,12 @@ using UnityEngine.Serialization;
 
 public class Living : MonoBehaviour
 {
-
+    
+    // Health of the current building
     public int health;
-    public ParticleSystem deathParticles;
+    
+    // Reference to a particle system to play once the object dies
+    public GameObject deathParticles;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,17 +46,12 @@ public class Living : MonoBehaviour
         if (health <= 0)
         {
             
-            StartCoroutine(runDeathBit());
+            GameObject deathParticleObject = Instantiate(deathParticles, transform.position, Quaternion.FromToRotation(Vector3.forward, Vector3.up));
+            deathParticleObject.GetComponent<ParticleSystem>().Play();
+            Destroy(this.gameObject);
             
         }
 
-    }
-
-    IEnumerator runDeathBit()
-    {
-        deathParticles.Play();
-        yield return new WaitForSeconds(2f);
-        Destroy(gameObject);
     }
 
 }
