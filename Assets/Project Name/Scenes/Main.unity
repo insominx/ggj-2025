@@ -400,6 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c233cf4f937c44a8b6f3389464f69c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  verboseLogging: 1
   planeManager: {fileID: 1708262727}
   anchorManager: {fileID: 1708262728}
   boundingBoxManager: {fileID: 1708262726}
