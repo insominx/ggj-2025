@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     // States.
     public GameState[] gameStates;
     InformState gameConclusion;
+    GameState nextPhaseState; // State to go back to if you are still alive at end of play.
 
     // State management.
     int currentGameStateIdx = 0;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     // Game information.
     public List<GameObject> cities = new();
     public List<GameObject> enemies = new();
+    bool victory = false; // Most recent state.
 
     // Public Unity interface. /////////////////////////////////////////////////
 
@@ -32,9 +34,12 @@ public class GameManager : MonoBehaviour
             new StartState(),
             new InformState("Wait", "", 5),
             new InformState("Title", "Bubble Command\nby\nBubbltroop", 10),
-            new InformState("GetReady", "Get ready.", 10, true),
+            new SpawnCitiesState(this),
+            nextPhaseState = new InformState("GetReady", "Get ready.", 10, true),
             new PlayState(this),
             gameConclusion = new InformState("Report", "<TBD>", 10),
+            new TransitionToStateOnCondition(this, nextPhaseState, gameWasWon),
+            new DestroyEverythingState(this)
         };
     }
 
@@ -51,10 +56,13 @@ public class GameManager : MonoBehaviour
 
         if (currentState.ShouldEnd())
         {
-            StopState(currentState);
+            var state = currentState;
 
-            // TODO: Update this in a better way (don't want to repeat start or title).
+            // By default plan to advance to next state (wrapping around).
+            // Note that stopping a state might override this value.
             currentGameStateIdx = (currentGameStateIdx + 1) % gameStates.Length;
+
+            StopState(state);
 
             StartState(currentState);
         }
@@ -73,11 +81,13 @@ public class GameManager : MonoBehaviour
 
     public void ReportVictory()
     {
+        victory = true;
         gameConclusion.SetText("Victory!");
     }
 
     public void ReportDefeat()
     {
+        victory = false;
         gameConclusion.SetText("Defeat!");
     }
 
@@ -165,5 +175,15 @@ public class GameManager : MonoBehaviour
             GameObject.Destroy(enemy);
         }
         enemies.Clear();
+    }
+
+    bool gameWasWon()
+    {
+        return victory;
+    }
+
+    public void OverrideNextState(GameState state)
+    {
+        currentGameStateIdx = Array.IndexOf(gameStates, state);
     }
 }
