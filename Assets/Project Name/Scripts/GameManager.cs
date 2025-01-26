@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     // States.
     public GameState[] gameStates;
+    InformState gameConclusion;
 
     // State management.
     int currentGameStateIdx = 0;
@@ -22,8 +23,9 @@ public class GameManager : MonoBehaviour
             new StartState(),
             new InformState("Wait", "", 5),
             new InformState("Title", "Bubble Command\nby\nBubbletroop", 10),
-            new InformState("GetReady", "Get ready.", 20, true),
-            new PlayState(this)
+            new InformState("GetReady", "Get ready.", 10, true),
+            new PlayState(this),
+            gameConclusion = new InformState("Report", "<TBD>", 10),
         };
     }
 
@@ -58,5 +60,15 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Game Manager starting game state " + state.name);
         state.Start();
+    }
+
+    public void ReportVictory()
+    {
+        gameConclusion.SetText("Victory!");
+    }
+
+    public void ReportDefeat()
+    {
+        gameConclusion.SetText("Defeat!");
     }
 }

@@ -18,6 +18,11 @@ class InformState : GameState
         this.showCountdown = showCountdown;
     }
 
+    public void SetText(string text)
+    {
+        this.text = text;
+    }
+
     public override void Start()
     {
         startTime = Time.time;
