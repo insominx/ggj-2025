@@ -7,20 +7,25 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     // States.
-    public GameState[] gameStates = new GameState[]
-    {
-        new StartState(),
-        new InformState("Wait", "", 5),
-        new InformState("Title", "Bubble Command\nby\nBubbletroop", 10),
-        new InformState("GetReady", "Get ready.", 20, true),
-        new PlayState()
-    };
+    public GameState[] gameStates;
 
     // State management.
     int currentGameStateIdx = 0;
     GameState currentState { get { return gameStates[currentGameStateIdx]; } }
 
     // Public Unity interface. /////////////////////////////////////////////////
+
+    void Awake()
+    {
+        gameStates = new GameState[]
+        {
+            new StartState(),
+            new InformState("Wait", "", 5),
+            new InformState("Title", "Bubble Command\nby\nBubbletroop", 10),
+            new InformState("GetReady", "Get ready.", 20, true),
+            new PlayState(this)
+        };
+    }
 
     void Start()
     {

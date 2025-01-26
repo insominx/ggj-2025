@@ -24,6 +24,11 @@ public class RealityMixer : MonoBehaviour
 
     List<Pose> spawnPoints = new();
 
+    public List<Pose> GetSpawnPoints()
+    {
+        return spawnPoints;
+    }
+
     void Awake()
     {
         if (!planeManager)
