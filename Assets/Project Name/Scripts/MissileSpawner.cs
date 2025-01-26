@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MissileSpawner : MonoBehaviour
 {
-    
     public GameObject MissilePrefab;
     public int spawnerType; 
     public GameObject parentObject;
