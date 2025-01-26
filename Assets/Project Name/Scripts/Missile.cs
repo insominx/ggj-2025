@@ -11,7 +11,7 @@ public class Missile : MonoBehaviour
     {
         targetDirection = transform.up.normalized * speed;
     }
-    
+
     public void Update()
     {
         // Script to have the missile move to the target direction

@@ -174,6 +174,9 @@ public class BubbleManager : MonoBehaviour
             PlayFireSound();
 
             rb.AddForce(stylusTip.transform.forward * fireForce * (1f - spawnedSphere.transform.localScale.x), ForceMode.Impulse);
+
+            // Start death countdown.
+            spawnedSphere.GetComponent<Bubble>().PrepareToDie();
         }
     }
 
