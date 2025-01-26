@@ -312,6 +312,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: oscar
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 63cc2d65190425d4496d38071013b01d, type: 3}
+      propertyPath: m_TagString
+      value: City
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
