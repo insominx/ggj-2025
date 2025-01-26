@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Inputs.Haptics;
 using System.Collections;
+using UnityEngine.UIElements;
 using UnityEngine.XR;
 
 public class BubbleManager : MonoBehaviour
@@ -88,6 +89,8 @@ public class BubbleManager : MonoBehaviour
         float fullSize = spawnedSphere.transform.localScale.x;
         spawnedSphere.transform.localScale = Vector3.zero;
 
+        float scale = 0f;
+
         for (int i = 0; i <= steps; i++)
         {
             // Play charge sound with adjusted amplitude
@@ -98,7 +101,7 @@ public class BubbleManager : MonoBehaviour
             stylus.SendHapticImpulse(0, currentAmplitude, currentDuration);
 
             // Grow the sphere's size based on the current amplitude
-            float scale = Mathf.Lerp(0, 1, currentAmplitude / maxAmplitude);
+            scale = Mathf.Lerp(0, 1, currentAmplitude / maxAmplitude);
             spawnedSphere.transform.localScale = (Vector3.one * fullSize) * scale;
 
             if (endCharge) break;
@@ -123,10 +126,11 @@ public class BubbleManager : MonoBehaviour
         spawnedSphere.transform.localScale = Vector3.zero;
 
         float elapsedTime = 0f;
+        float progress = 0f;
 
         while (elapsedTime < linearChargeTime)
         {
-            float progress = elapsedTime / linearChargeTime;
+            progress = elapsedTime / linearChargeTime;
             float currentAmplitude = Mathf.Lerp(0, maxAmplitude, progress);
 
             // Play charge sound with adjusted amplitude
@@ -146,7 +150,7 @@ public class BubbleManager : MonoBehaviour
         }
 
         // Ensure it's fully charged
-        spawnedSphere.transform.localScale = Vector3.one * fullSize;
+        // spawnedSphere.transform.localScale = Vector3.one * fullSize;
 
         // Fire the sphere into space
         FireSphere();
@@ -157,16 +161,19 @@ public class BubbleManager : MonoBehaviour
         if (spawnedSphere != null)
         {
             spawnedSphere.transform.parent = null;
+            
             Rigidbody rb = spawnedSphere.GetComponent<Rigidbody>();
             if (rb == null)
             {
                 rb = spawnedSphere.AddComponent<Rigidbody>();
             }
+            
+            rb.useGravity = false;
 
             // Play fire sound
             PlayFireSound();
 
-            rb.AddForce(-stylusTip.up * fireForce, ForceMode.Impulse);
+            rb.AddForce(stylusTip.transform.forward * fireForce * spawnedSphere.transform.localScale.x, ForceMode.Impulse);
         }
     }
 
