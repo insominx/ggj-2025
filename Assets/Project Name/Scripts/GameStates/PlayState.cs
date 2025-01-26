@@ -5,7 +5,6 @@ using UnityEngine;
 class PlayState : GameState
 {
     GameManager gameManager;
-    RealityMixer realityMixer;
 
     // State management.
     float timeWhenLastMissileSeen;
@@ -18,11 +17,7 @@ class PlayState : GameState
 
     public override void Start()
     {
-        realityMixer = Object.FindFirstObjectByType<RealityMixer>();
-        foreach (var pose in realityMixer.GetCitySpawnPoints())
-        {
-            var city = gameManager.SpawnBase(pose);
-        }
+        RealityMixer realityMixer = Object.FindFirstObjectByType<RealityMixer>();
 
         foreach (var pose in realityMixer.GetEnemySpawnPoints())
         {
@@ -35,8 +30,7 @@ class PlayState : GameState
 
     public override void Stop()
     {
-        gameManager.DestroyAllCities();
-        gameManager.DestroyAllEnemies();
+        // Nada ftm.
     }
 
     public override void Update()
