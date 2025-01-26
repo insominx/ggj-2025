@@ -124,6 +124,8 @@ public class GameManager : MonoBehaviour
     IEnumerator SpawnMissiles()
     {
         SpawnMissile();
+        
+        Debug.Log("Spawning missile");
 
         yield return new WaitForSeconds(1f);
 
@@ -135,8 +137,16 @@ public class GameManager : MonoBehaviour
 
     public void SpawnMissile()
     {
-        GameObject randomLocat = enemies[(int)(UnityEngine.Random.Range(0, enemies.Count))];
-        randomLocat.GetComponent<MissileSpawner>().SpawnMissile();
+
+        if (enemies.Count == 0)
+            return;
+        
+        Debug.Log("Finding a random element in " + enemies.Count);
+        int rand = UnityEngine.Random.Range(0, enemies.Count);
+        Debug.Log("Got " + rand);
+        
+        GameObject randomLocat = enemies[rand];
+        randomLocat.transform.GetChild(0).GetComponent<MissileSpawner>().SpawnMissile();
     }
 
     public void DestroyAllCities()
