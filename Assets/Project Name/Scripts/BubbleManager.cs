@@ -11,7 +11,7 @@ public class BubbleManager : MonoBehaviour
     public AudioSource audioSource; // Assign an AudioSource component in the inspector
     public AudioClip chargeSound; // Assign the sound for charging in the inspector
     public AudioClip fireSound;   // Assign the sound for firing in the inspector
-    private InputDevice stylus;
+    InputDevice stylus;
 
     [Header("Haptic Parameters")]
     public float initialAmplitude = 0.2f; // Starting intensity
@@ -24,6 +24,8 @@ public class BubbleManager : MonoBehaviour
     public float linearChargeTime = 3f;  // Time to charge linearly from 0 to 1
 
     private GameObject spawnedSphere;     // Reference to the spawned sphere
+
+    bool endCharge;
 
     public enum ChargeMode { Stepped, Linear }
     public ChargeMode chargeMode = ChargeMode.Stepped;
@@ -39,13 +41,17 @@ public class BubbleManager : MonoBehaviour
         chargeMode = chargeMode == ChargeMode.Stepped ? ChargeMode.Linear : ChargeMode.Stepped;
     }
 
-    public void StartChargeHaptics()
+    public void StartChargeHaptics(bool pressed)
     {
+        // Debug.Log("start charge");
+
         if (leftControllerImpulse == null || spherePrefab == null || stylusTip == null || audioSource == null)
         {
             Debug.LogError("HapticImpulsePlayer, SpherePrefab, StylusTip, or AudioSource is not assigned.");
             return;
         }
+
+        endCharge = false;
 
         switch (chargeMode)
         {
@@ -61,6 +67,12 @@ public class BubbleManager : MonoBehaviour
                 Debug.LogError("Unknown charge mode selected.");
                 break;
         }
+    }
+
+    public void EndChargeHaptics()
+    {
+        // Debug.Log("end charge");
+        endCharge = true;
     }
 
     private IEnumerator SteppedChargeRoutine()
@@ -88,6 +100,8 @@ public class BubbleManager : MonoBehaviour
             // Grow the sphere's size based on the current amplitude
             float scale = Mathf.Lerp(0, 1, currentAmplitude / maxAmplitude);
             spawnedSphere.transform.localScale = (Vector3.one * fullSize) * scale;
+
+            if (endCharge) break;
 
             // Pause for the current duration
             yield return new WaitForSeconds(currentDuration);
@@ -126,6 +140,8 @@ public class BubbleManager : MonoBehaviour
             spawnedSphere.transform.localScale = (Vector3.one * fullSize) * progress;
 
             elapsedTime += Time.deltaTime;
+            if (endCharge) break;
+
             yield return null; // Wait for the next frame
         }
 

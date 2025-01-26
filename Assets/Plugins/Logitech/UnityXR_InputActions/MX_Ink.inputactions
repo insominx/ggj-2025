@@ -27,7 +27,7 @@
                     "name": "Grab",
                     "type": "Button",
                     "id": "2a733a58-54e8-41f9-b7ea-1e00717bc3ec",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
