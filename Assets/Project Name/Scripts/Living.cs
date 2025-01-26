@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Living : MonoBehaviour
 {
 
     public int health;
+    public ParticleSystem deathParticles;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,9 +42,18 @@ public class Living : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            
+            StartCoroutine(runDeathBit());
+            
         }
 
+    }
+
+    IEnumerator runDeathBit()
+    {
+        deathParticles.Play();
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
     }
 
 }
