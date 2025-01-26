@@ -7,15 +7,33 @@ public class Missile : MonoBehaviour
     public Vector3 targetDirection;
     private GameObject spawner;
 
+    public static int Count = 0;
+
+    float maxLifetime = 15.0f; // Seconds.
+    float startTime;
+
     public void Start()
     {
-        targetDirection = transform.up.normalized * speed;
+        targetDirection = transform.up.normalized;
+        Count++;
+        startTime = Time.time;
+    }
+
+    public void SteerTowards(Vector3 targetPosition)
+    {
+        targetDirection = (targetPosition - transform.position).normalized;
     }
 
     public void Update()
     {
         // Script to have the missile move to the target direction
-        this.gameObject.transform.position += targetDirection * Time.deltaTime;
+        this.gameObject.transform.position += targetDirection * speed * Time.deltaTime;
+
+        if (Time.time > startTime + maxLifetime)
+        {
+            // We've lived too long -- blow up.
+            Explode();
+        }
     }
 
     bool ExplodeTag(string tag)
@@ -55,5 +73,6 @@ public class Missile : MonoBehaviour
     {
         Instantiate(bomb, this.transform.position, Quaternion.identity);
         Destroy(gameObject);
+        Count--;
     }
 }

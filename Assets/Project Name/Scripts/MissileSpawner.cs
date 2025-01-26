@@ -16,10 +16,11 @@ public class MissileSpawner : MonoBehaviour
         }
     }
 
-    public void SpawnMissile()
+    public Missile SpawnMissile()
     {
         GameObject missile = Instantiate(MissilePrefab, transform.position, transform.rotation);
         Physics.IgnoreCollision(missile.GetComponent<Collider>(), parentObject.GetComponent<Collider>());
+        return missile.GetComponent<Missile>();
     }
 
     // Continuously spawns missiles over time
