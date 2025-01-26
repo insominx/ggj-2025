@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MissilePrefab: {fileID: 538571502984338751, guid: 79eba762c18370d4ab98fa2ea10cb068, type: 3}
-  spawnerType: 1
+  spawnerType: 0
   parentObject: {fileID: 8988715351343304954}
 --- !u!1 &8988715351343304954
 GameObject:
