@@ -26,7 +26,7 @@ class PlayState : GameState
 
         foreach (var pose in realityMixer.GetEnemySpawnPoints())
         {
-            var enemy = gameManager.SpawnEnemy(pose);
+            GameObject enemy = gameManager.SpawnEnemy(pose);
         }
 
         // Let's say we've seen a missile now, and we'll update this later.
