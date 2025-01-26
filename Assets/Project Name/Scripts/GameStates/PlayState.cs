@@ -81,27 +81,32 @@ class PlayState : GameState
 
     private GameObject SpawnBase(Pose pose)
     {
-        var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        //var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        var sideLength = 0.1f;
+        var position = pose.position + new Vector3(0, sideLength / 2, 0);
+        var city = GameObject.Instantiate(gameManager.prefabCity, position, pose.rotation);
 
         // Position and scale it.
-        var sideLength = 0.1f;
-        cube.transform.localScale = new Vector3(sideLength, sideLength, sideLength);
-        cube.transform.SetPositionAndRotation(pose.position + new Vector3(0, sideLength / 2, 0), pose.rotation);
+        city.transform.localScale = new Vector3(sideLength, sideLength, sideLength);
+        //city.transform.SetPositionAndRotation(zz, pose.rotation);
 
-        // Ready!
-        return cube;
+        return city;
     }
 
     private GameObject SpawnEnemy(Pose pose)
     {
-        var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        //var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        var sideLength = 0.1f;
+        var position = pose.position + pose.forward * sideLength / 2;
+        var enemy = GameObject.Instantiate(gameManager.prefabMissileSpawner, position, pose.rotation);
+
+        // Tell spawner not to collide with itself.
+        //enemy.GetComponent<MissileSpawner>().parentObject = enemy;
 
         // Position and scale it.
-        var sideLength = 0.1f;
-        sphere.transform.localScale = new Vector3(sideLength, sideLength, sideLength);
-        sphere.transform.SetPositionAndRotation(pose.position + pose.forward * sideLength / 2, pose.rotation);
+        enemy.transform.localScale = new Vector3(sideLength, sideLength, sideLength);
+        //enemy.transform.SetPositionAndRotation(zz, pose.rotation);
 
-        // Ready!
-        return sphere;
+        return enemy;
     }
 }

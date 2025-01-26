@@ -6,6 +6,11 @@ using UnityEngine;
 // Manage game state machine etc.
 public class GameManager : MonoBehaviour
 {
+    // Editor/data/prefab interface.
+    [Header("References)")]
+    public GameObject prefabMissileSpawner; // Enemy missile spawner.
+    public GameObject prefabCity; // You defend these.
+
     // States.
     public GameState[] gameStates;
     InformState gameConclusion;

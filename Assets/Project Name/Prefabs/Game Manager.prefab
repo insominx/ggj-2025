@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a125dd8086e594cb1aa263f4b0263b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabMissileSpawner: {fileID: 8988715351343304954, guid: 869a9689d64d0804293a126fba0fb3ba, type: 3}
+  prefabCity: {fileID: 3049803900109114361, guid: 62aed9518dc0f2f47a301609c3c08270, type: 3}
