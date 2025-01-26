@@ -5,21 +5,23 @@ class InformState : GameState
     // Configuration.
     string text;
     float timeoutSeconds;
+    bool showCountdown;
 
     // Scratch memory.
     float startTime;
 
-    public InformState(string name, string text, float timeoutSeconds)
+    public InformState(string name, string text, float timeoutSeconds, bool showCountdown = false)
         : base(name)
     {
         this.text = text;
         this.timeoutSeconds = timeoutSeconds;
+        this.showCountdown = showCountdown;
     }
 
     public override void Start()
     {
         startTime = Time.time;
-        Informer.ShowText(text);
+        UpdateText();
     }
 
     public override void Stop()
@@ -29,7 +31,20 @@ class InformState : GameState
 
     public override void Update()
     {
-        // Nada ftm.
+        if (showCountdown)
+        {
+            UpdateText();
+        }
+    }
+
+    private void UpdateText()
+    {
+        var displayText = text;
+        if (showCountdown)
+        {
+            displayText += "\n" + (int)(startTime + timeoutSeconds - Time.time);
+        }
+        Informer.ShowText(displayText);
     }
 
     public override bool ShouldEnd()
