@@ -12,9 +12,9 @@ public class RealityMixer : MonoBehaviour
 
     // Editor/data/prefab interface.
     [Header("References)")]
-    [SerializeField] GameObject floor;
-    [SerializeField] GameObject leftController;
-    [SerializeField] GameObject rightController;
+    //[SerializeField] GameObject floor;
+    //[SerializeField] GameObject leftController;
+    //[SerializeField] GameObject rightController;
     [SerializeField] ARPlaneManager planeManager;
     [SerializeField] ARBoundingBoxManager boundingBoxManager;
 
@@ -23,6 +23,18 @@ public class RealityMixer : MonoBehaviour
     private Vector3 prevRightControllerPos;
 
     List<Pose> spawnPoints = new();
+
+    void Awake()
+    {
+        if (!planeManager)
+        {
+            planeManager = FindFirstObjectByType<ARPlaneManager>();
+        }
+        if (!boundingBoxManager)
+        {
+            boundingBoxManager = FindFirstObjectByType<ARBoundingBoxManager>();
+        }
+    }
 
     void Start()
     {
@@ -94,6 +106,7 @@ public class RealityMixer : MonoBehaviour
     // Update is called once per frame.
     void Update()
     {
+        /*
         // Read current controller poses.
         var currLeftControllerPos = leftController.transform.position;
         var currRightControllerPos = rightController.transform.position;
@@ -124,6 +137,7 @@ public class RealityMixer : MonoBehaviour
         // Remember hand positions for next time.
         prevLeftControllerPos = currLeftControllerPos;
         prevRightControllerPos = currRightControllerPos;
+        //*/
     }
 
     void SetTrackableAlpha(ARTrackable trackable, float fillAlpha, float lineAlpha)
