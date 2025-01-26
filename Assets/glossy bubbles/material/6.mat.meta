@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 0c65ca6e855751d45873585251059f39
+timeCreated: 1521536381
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 114601
+  packageName: Glossy Bubbles
+  packageVersion: 1.0
+  assetPath: Assets/glossy bubbles/material/6.mat
+  uploadId: 236461
