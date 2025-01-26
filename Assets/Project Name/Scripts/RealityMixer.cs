@@ -24,6 +24,18 @@ public class RealityMixer : MonoBehaviour
 
     List<Pose> spawnPoints = new();
 
+    void Awake()
+    {
+        if (!planeManager)
+        {
+            planeManager = FindFirstObjectByType<ARPlaneManager>();
+        }
+        if (!boundingBoxManager)
+        {
+            boundingBoxManager = FindFirstObjectByType<ARBoundingBoxManager>();
+        }
+    }
+
     void Start()
     {
         // find Trackables
