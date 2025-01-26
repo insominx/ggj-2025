@@ -269,7 +269,6 @@ MonoBehaviour:
   m_Name: Android
   m_EditorClassIdentifier: 
   features:
-  - {fileID: -6260514876409458794}
   - {fileID: 8930891034184500309}
   - {fileID: -7640995266192609978}
   - {fileID: 2979812608843838220}
@@ -282,12 +281,10 @@ MonoBehaviour:
   - {fileID: 4814966647768083955}
   - {fileID: 7880174158235431709}
   - {fileID: -4050044474944917847}
-  - {fileID: 8109338079448246119}
   - {fileID: 1122582941875143834}
   - {fileID: 2947255211749280462}
   - {fileID: 1627174003818519897}
   - {fileID: 6864343417898484685}
-  - {fileID: -7343303453914389400}
   - {fileID: -7796394605530342979}
   - {fileID: 8678892576427614013}
   - {fileID: 7784321820782340957}
@@ -320,7 +317,6 @@ MonoBehaviour:
   m_Name: Standalone
   m_EditorClassIdentifier: 
   features:
-  - {fileID: 3799148919880862824}
   - {fileID: 6279330296319401734}
   - {fileID: 4787877739830667330}
   - {fileID: -1567908192558122105}
@@ -333,16 +329,6 @@ MonoBehaviour:
   - {fileID: -5772582730546074299}
   - {fileID: 7419660570615318675}
   - {fileID: 1988373804990380758}
-  - {fileID: 4393593387569328173}
-  - {fileID: 4209905258943434073}
-  - {fileID: -7594964720970995263}
-  - {fileID: 8625348173405299670}
-  - {fileID: -355206367794358703}
-  - {fileID: -1944585762738415912}
-  - {fileID: 713035096038146375}
-  - {fileID: -3498503364295646891}
-  - {fileID: 7177679298889940553}
-  - {fileID: -4135887797496625758}
   - {fileID: 822914307200059104}
   - {fileID: 1754409252296478930}
   - {fileID: 6867325503845205882}
@@ -1082,7 +1068,7 @@ MonoBehaviour:
   nameUi: 'Meta Quest: Camera (Passthrough)'
   version: 0.1.0
   featureIdInternal: com.unity.openxr.feature.arfoundation-meta-camera
-  openxrExtensionStrings: XR_FB_passthrough
+  openxrExtensionStrings: XR_FB_passthrough XR_FB_composition_layer_alpha_blend
   company: Unity Technologies
   priority: 0
   required: 0

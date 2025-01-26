@@ -167,6 +167,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2009077825907230681, guid: 4e466aa6c24338946bca253c96e3dfaa, type: 3}
+      propertyPath: m_RenderAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009077825907230681, guid: 4e466aa6c24338946bca253c96e3dfaa, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 45c620c893798344a91601311b406a54, type: 2}
+    - target: {fileID: 3835027428297100960, guid: 4e466aa6c24338946bca253c96e3dfaa, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3835027428297100960, guid: 4e466aa6c24338946bca253c96e3dfaa, type: 3}
+      propertyPath: CollisionModule.m_Dampen.scalar
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 3835027428297100960, guid: 4e466aa6c24338946bca253c96e3dfaa, type: 3}
+      propertyPath: ColorModule.gradient.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3835027428297100960, guid: 4e466aa6c24338946bca253c96e3dfaa, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0.07725169
+      objectReference: {fileID: 0}
+    - target: {fileID: 3835027428297100960, guid: 4e466aa6c24338946bca253c96e3dfaa, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 0.07725169
+      objectReference: {fileID: 0}
+    - target: {fileID: 3835027428297100960, guid: 4e466aa6c24338946bca253c96e3dfaa, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0.5283019
+      objectReference: {fileID: 0}
+    - target: {fileID: 3835027428297100960, guid: 4e466aa6c24338946bca253c96e3dfaa, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_ColorSpace
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5602865585723868877, guid: 4e466aa6c24338946bca253c96e3dfaa, type: 3}
       propertyPath: m_Name
       value: Base (2)
