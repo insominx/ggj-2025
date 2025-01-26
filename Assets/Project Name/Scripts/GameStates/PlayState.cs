@@ -7,8 +7,11 @@ class PlayState : GameState
 {
     GameManager gameManager;
 
+    const float maxRoundTime = 30.0f;
+
     // State management.
     float timeWhenLastMissileSeen;
+    float timeWhenPlayStarted;
 
     public PlayState(GameManager gameManager)
         : base("Play")
@@ -26,7 +29,8 @@ class PlayState : GameState
         }
 
         // Let's say we've seen a missile now, and we'll update this later.
-        timeWhenLastMissileSeen = Time.time;
+        timeWhenPlayStarted = Time.time;
+        timeWhenLastMissileSeen = timeWhenPlayStarted;
 
         // Start firing missiles now
         gameManager.StartFiringMissiles();
@@ -35,12 +39,20 @@ class PlayState : GameState
 
     public override void Stop()
     {
-        // Nada ftm.
+        gameManager.StopFiringMissiles();
     }
 
     public override void Update()
     {
-        // Nada ftm.
+        if (gameManager.MissilesAreInTheAir())
+        {
+            timeWhenLastMissileSeen = Time.time;
+        }
+
+        if (Time.time > timeWhenPlayStarted + maxRoundTime)
+        {
+            gameManager.StopFiringMissiles();
+        }
     }
 
     public override bool ShouldEnd()
@@ -48,10 +60,10 @@ class PlayState : GameState
         // Two conditions for game being over -- either cities are all gone or waves are done.
 
         // Check for cities being all gone.
-        var defeat = !gameManager.cities.Any();
+        var defeat = !Living.livingThings.Any();
 
-        // We win if there have been no missiles for 5 or 10 seconds.
-        var victory = Time.time - timeWhenLastMissileSeen > 10.0f;
+        // We win if there have been no missiles for 5-10 seconds.
+        var victory = Time.time - timeWhenLastMissileSeen > 7.5f;
 
         if (defeat)
         {

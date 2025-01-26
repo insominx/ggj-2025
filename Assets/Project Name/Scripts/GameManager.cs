@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     GameState currentState { get { return gameStates[currentGameStateIdx]; } }
 
     // Game information.
-    public List<GameObject> cities = new();
     public List<GameObject> enemies = new();
     bool victory = false; // Most recent state.
 
@@ -100,9 +99,6 @@ public class GameManager : MonoBehaviour
 
         // Position and scale it.
         city.transform.localScale = new Vector3(sideLength, sideLength, sideLength);
-        //city.transform.SetPositionAndRotation(zz, pose.rotation);
-
-        cities.Add(city);
 
         return city;
     }
@@ -126,47 +122,62 @@ public class GameManager : MonoBehaviour
         return enemy;
     }
 
+    bool firing = false;
     public void StartFiringMissiles()
     {
+        firing = true;
         StartCoroutine(SpawnMissiles());
     }
-    
+
+    public void StopFiringMissiles()
+    {
+        firing = false;
+    }
+
     IEnumerator SpawnMissiles()
     {
-        SpawnMissile();
-
         Debug.Log("Spawning missile");
+        var missile = SpawnMissile();
+
+        if (!missile)
+        {
+            yield break;
+        }
+
+        // Find a random base and steer towards it.
+        var city = Living.GetRandomLivingThing();
+        // Not quite working for some reason.
+        // TODO: FIXME!
+        missile.SteerTowards(city.gameObject.transform.position);
 
         yield return new WaitForSeconds(1f);
 
         // Some game state check
-
-        StartCoroutine(SpawnMissiles());
+        if (firing && Missile.Count < 10) // Check for too intense
+        {
+            StartCoroutine(SpawnMissiles());
+        }
     }
 
-    public void SpawnMissile()
+    public Missile SpawnMissile()
     {
-
         if (enemies.Count == 0)
         {
-            return;
+            return null;
         }
         
         Debug.Log("Finding a random element in " + enemies.Count);
         int rand = UnityEngine.Random.Range(0, enemies.Count);
         Debug.Log("Got " + rand);
-        
+
         GameObject randomLocat = enemies[rand];
-        randomLocat.transform.GetChild(0).GetComponent<MissileSpawner>().SpawnMissile();
+        var missile = randomLocat.transform.GetChild(0).GetComponent<MissileSpawner>().SpawnMissile();
+        return missile;
     }
 
     public void DestroyAllCities()
     {
-        foreach (var city in cities)
-        {
-            GameObject.Destroy(city);
-        }
-        cities.Clear();
+        Living.DestroyAll();
     }
 
     public void DestroyAllEnemies()
@@ -186,5 +197,10 @@ public class GameManager : MonoBehaviour
     public void OverrideNextState(GameState state)
     {
         currentGameStateIdx = Array.IndexOf(gameStates, state);
+    }
+
+    public bool MissilesAreInTheAir()
+    {
+        return Missile.Count > 0;
     }
 }
