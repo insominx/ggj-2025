@@ -21,13 +21,13 @@ public class Missile : MonoBehaviour
 
     public void SteerTowards(Vector3 targetPosition)
     {
-        targetDirection = (targetPosition - transform.position).normalized;
+        transform.LookAt(targetPosition, transform.up);
     }
 
     public void Update()
     {
         // Script to have the missile move to the target direction
-        this.gameObject.transform.position += targetDirection * speed * Time.deltaTime;
+        this.gameObject.transform.position += transform.up * (speed * Time.deltaTime);
 
         if (Time.time > startTime + maxLifetime)
         {
