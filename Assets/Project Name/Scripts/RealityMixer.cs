@@ -22,7 +22,18 @@ public class RealityMixer : MonoBehaviour
     private Vector3 prevLeftControllerPos;
     private Vector3 prevRightControllerPos;
 
-    List<Pose> spawnPoints = new();
+    List<Pose> citySpawnPoints = new();
+    List<Pose> enemySpawnPoints = new();
+
+    public List<Pose> GetCitySpawnPoints()
+    {
+        return citySpawnPoints;
+    }
+
+    public List<Pose> GetEnemySpawnPoints()
+    {
+        return enemySpawnPoints;
+    }
 
     void Awake()
     {
@@ -62,9 +73,16 @@ public class RealityMixer : MonoBehaviour
         float fillAlpha = 0.01f; // 0.3f;
         float lineAlpha = 0.1f; // 1f;
 
+        enemySpawnPoints.Clear();
         foreach (ARPlane arPlane in planeManager.trackables)
         {
             SetTrackableAlpha(arPlane, fillAlpha, lineAlpha);
+
+            // The front of each plane is a reasonable place to set an enemy.
+            var pose = arPlane.pose;
+            var spot = pose.position;
+
+            enemySpawnPoints.Add(new Pose(spot, pose.rotation));
         }
     }
 
@@ -84,7 +102,7 @@ public class RealityMixer : MonoBehaviour
         float fillAlpha = 0.01f; // 0.3f;
         float lineAlpha = 0.1f; // 1f;
 
-        spawnPoints.Clear();
+        citySpawnPoints.Clear();
         foreach (ARBoundingBox arBoundingBox in boundingBoxManager.trackables)
         {
             SetTrackableAlpha(arBoundingBox, fillAlpha, lineAlpha);
@@ -94,7 +112,7 @@ public class RealityMixer : MonoBehaviour
             var size = arBoundingBox.size;
             var spot = pose.position + pose.up * size.y / 2;
 
-            spawnPoints.Add(new Pose(spot, pose.rotation));
+            citySpawnPoints.Add(new Pose(spot, pose.rotation));
         }
     }
 
