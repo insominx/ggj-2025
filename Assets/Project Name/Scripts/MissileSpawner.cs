@@ -6,11 +6,12 @@ public class MissileSpawner : MonoBehaviour
 {
     
     public GameObject MissilePrefab;
-    public bool isPlayer; 
+    public int spawnerType; 
+    public GameObject parentObject;
     
     public void Start()
     {
-        if (!isPlayer)
+        if (spawnerType == 1)
         {
             SpawnMissiles();
         }
@@ -19,6 +20,7 @@ public class MissileSpawner : MonoBehaviour
     public void SpawnMissile()
     {
         GameObject missile = Instantiate(MissilePrefab, transform.position, transform.rotation);
+        Physics.IgnoreCollision(missile.GetComponent<Collider>(), parentObject.GetComponent<Collider>());
     }
 
     // Continuously spawns missiles over time
