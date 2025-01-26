@@ -6,7 +6,7 @@ using UnityEngine.XR.ARSubsystems;
 public class DebugVisualizer : MonoBehaviour
 {
     [Header("Configuration")]
-    bool verboseLogging;
+    public bool verboseLogging;
 
     [Header("References)")]
     [SerializeField] ARPlaneManager planeManager;
