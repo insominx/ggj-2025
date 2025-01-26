@@ -359,6 +359,65 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3464683882027818539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7956031927448759959}
+  - component: {fileID: 76493048081231689}
+  m_Layer: 0
+  m_Name: BubbleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7956031927448759959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464683882027818539}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7350847673559518540}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &76493048081231689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464683882027818539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 886e7b5432b30154385b959defc1ac4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftControllerImpulse: {fileID: 5755169352808127176}
+  spherePrefab: {fileID: 2023384834262063970, guid: 2aa3d2dcdda978d4686423704f4e5f2a, type: 3}
+  stylusTip: {fileID: 839414851116015463}
+  audioSource: {fileID: 6590751775183798098}
+  chargeSound: {fileID: 8300000, guid: cedf0ab8a4a46e245862212d7a73f3a1, type: 3}
+  fireSound: {fileID: 8300000, guid: da2c9413288275e4f97ea369fd36c911, type: 3}
+  initialAmplitude: 0.08
+  maxAmplitude: 1
+  initialDuration: 0.85
+  minDuration: 0.02
+  pauseTime: 0.64
+  steps: 8
+  fireForce: 6.47
+  linearChargeTime: 3
+  chargeMode: 1
 --- !u!1 &3514009071905360143
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,6 +490,7 @@ Transform:
   - {fileID: 8540966562726717732}
   - {fileID: 440462888938254810}
   - {fileID: 3958479997177976615}
+  - {fileID: 7956031927448759959}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4795675726413534661
@@ -518,9 +578,24 @@ MonoBehaviour:
   onGrabActionPerformed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 76493048081231689}
         m_TargetAssemblyTypeName: BubbleManager, Assembly-CSharp
-        m_MethodName: Test
+        m_MethodName: StartChargeHaptics
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onGrabActionCanceled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 76493048081231689}
+        m_TargetAssemblyTypeName: BubbleManager, Assembly-CSharp
+        m_MethodName: EndChargeHaptics
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1103,6 +1178,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
+--- !u!4 &839414851116015463 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1101733386290497091, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
+  m_PrefabInstance: {fileID: 354684796204325156}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2907451981094271586 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3221568920173192006, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
@@ -1116,6 +1196,22 @@ GameObject:
 --- !u!1 &5425443254024638696 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5739587129140316620, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
+  m_PrefabInstance: {fileID: 354684796204325156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5755169352808127176 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5418516419680289772, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
+  m_PrefabInstance: {fileID: 354684796204325156}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b734f2bd29eeddd4d85afb0c266228c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!82 &6590751775183798098 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6889128782392157814, guid: 6966157d67b33e34c8d951a5b19ed961, type: 3}
   m_PrefabInstance: {fileID: 354684796204325156}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1716860620873630873

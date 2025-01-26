@@ -26,6 +26,7 @@ public class StylusEventRelay : MonoBehaviour
     [Header("Stylus Events")]
     public FloatEvent onTipActionPerformed;
     public BoolEvent onGrabActionPerformed;
+    public BoolEvent onGrabActionCanceled;
     public BoolEvent onOptionActionPerformed;
     public FloatEvent onMiddleActionPerformed;
 
@@ -64,6 +65,7 @@ public class StylusEventRelay : MonoBehaviour
 
                 tipAction.performed += OnTipActionPerformed;
                 grabAction.performed += OnGrabActionPerformed;
+                grabAction.canceled += OnGrabActionCanceled;
                 optionAction.performed += OnOptionActionPerformed;
                 middleAction.performed += OnMiddleActionPerformed;
             }
@@ -83,6 +85,12 @@ public class StylusEventRelay : MonoBehaviour
         // Initial device connection check
         foreach (var device in devices)
             OnDeviceConnected(device);
+    }
+
+    //---------------------------------------------------------------------------
+    void OnGrabActionCanceled(InputAction.CallbackContext _)
+    {
+        onGrabActionCanceled.Invoke(false);
     }
 
     //---------------------------------------------------------------------------
@@ -133,8 +141,8 @@ public class StylusEventRelay : MonoBehaviour
     //---------------------------------------------------------------------------
     void OnGrabActionPerformed(InputAction.CallbackContext context)
     {
-        bool isGrabPressed = context.ReadValueAsButton();
-        onGrabActionPerformed.Invoke(isGrabPressed);
+        // bool isGrabPressed = context.ReadValueAsButton();
+        onGrabActionPerformed.Invoke(true);
     }
 
     //---------------------------------------------------------------------------
